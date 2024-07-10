@@ -7,6 +7,7 @@ require('dotenv').config();
 import express from 'express';
 import mongoose from 'mongoose';
 import todoRoute from "./routes/todo.route";
+import userRoute from "./routes/user.route";
 
 import cors from 'cors';
 const app = express();
@@ -38,6 +39,7 @@ app.use(cors());
  * Registers the todo route with the Express application.
  */
 app.use('/todos', todoRoute);
+app.use('/user', userRoute);
 
 /**
  * Starts the Express server and logs a message when it's running.
