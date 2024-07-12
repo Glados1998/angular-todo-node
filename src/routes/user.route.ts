@@ -4,6 +4,14 @@ import jwt from 'jsonwebtoken';
 
 const router = Router();
 
+/**
+ * Registers a new user.
+ *
+ * @param {Request} req - The incoming request containing user data.
+ * @param {Response} res - The response to be sent back.
+ *
+ * @returns {Promise<void>}
+ */
 router.post('/register', async (req: Request, res: Response) => {
     try {
 
@@ -22,6 +30,14 @@ router.post('/register', async (req: Request, res: Response) => {
     }
 });
 
+/**
+ * Authenticates a user and generates a JWT token.
+ *
+ * @param {Request} req - The incoming request containing user credentials.
+ * @param {Response} res - The response to be sent back.
+ *
+ * @returns {Promise<void>}
+ */
 router.post('/login', async (req: Request, res: Response) => {
     try {
 
@@ -53,6 +69,14 @@ router.post('/login', async (req: Request, res: Response) => {
     }
 })
 
+/**
+ * Deletes a user by their ID.
+ *
+ * @param {Request} req - The incoming request containing the user ID.
+ * @param {Response} res - The response to be sent back.
+ *
+ * @returns {Promise<void>}
+ */
 router.delete('/delete/:id', async (req: Request, res: Response) => {
     try {
 
