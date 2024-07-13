@@ -4,6 +4,7 @@ export const userModel = new Schema({
     username: {
         type: String,
         required: true,
+        unique: false
     },
     password: {
         type: String,
