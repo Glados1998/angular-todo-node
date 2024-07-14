@@ -36,7 +36,7 @@ app.use(express.urlencoded({extended: true}));
 app.use(cors());
 
 /**
- * Registers the todo route with the Express application.
+ * Registers the todo, and the user route with the Express application.
  */
 app.use('/todos', todoRoute);
 app.use('/user', userRoute);
