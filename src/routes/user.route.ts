@@ -95,4 +95,30 @@ router.delete('/delete/:id', async (req: Request, res: Response) => {
     }
 });
 
+router.post('/update/account-details', async (req: Request, res: Response) => {
+    try {
+
+        const updatedUser = await User.findByIdAndUpdate(req.body.id, req.body.data, {new: true});
+        if (!updatedUser) return res.status(404).json({message: 'User not found'});
+
+        res.status(200).json({message: 'User details updated successfully', user: updatedUser});
+
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+});
+
+router.post('/update/password', async (req: Request, res: Response) => {
+    try {
+
+        const updatedUser = await User.findByIdAndUpdate(req.body.id, {password: req.body.password}, {new: true});
+        if (!updatedUser) return res.status(404).json({message: 'User not found'});
+
+        res.status(200).json({message: 'Password updated successfully', user: updatedUser});
+
+    } catch (error) {
+        res.status(500).json({message: error.message});
+    }
+})
+
 export default router;
