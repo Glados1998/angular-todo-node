@@ -21,11 +21,15 @@ router.post('/register', async (req: Request, res: Response) => {
         const isEmailTaken = await User.findOne({email});
         if (isEmailTaken) return res.status(400).json({message: 'Email already taken'});
 
+        const isUsernameTaken = await User.findOne({username});
+        if (isUsernameTaken) return res.status(400).json({message: 'Username already taken'});
+
         const newUser = await User.create({username, email, password});
 
         const token = jwt.sign({
             email: email,
-            username: username
+            username: username,
+            id: newUser._id
         }, process.env.JWT_SECRET, {expiresIn: '1h'});
 
         res.status(200).json({user: newUser, message: 'User created successfully', token: token});
@@ -65,7 +69,8 @@ router.post('/login', async (req: Request, res: Response) => {
             token: token,
             user: {
                 username: foundUser.username,
-                email: foundUser.email
+                email: foundUser.email,
+                id: foundUser._id
             }
         });
 
