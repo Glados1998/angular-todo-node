@@ -4,13 +4,13 @@
  */
 
 require('dotenv').config();
-import express from 'express';
+import express, {Application} from 'express';
 import mongoose from 'mongoose';
 import todoRoute from "./routes/todo.route";
 import userRoute from "./routes/user.route";
 
 import cors from 'cors';
-const app = express();
+const app: Application = express();
 const port = process.env.PORT || 3000;
 
 /**
